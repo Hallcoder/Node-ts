@@ -1,12 +1,12 @@
 import { defaultMaxListeners } from 'events';
 import {Router} from 'express';
-import { createTodo } from './../controllers/todos';
+import { createTodo , getTodos} from './../controllers/todos';
 
 const router = Router();
 
 router
 .post('/',createTodo)
-.get('/')
+.get('/',getTodos)
 .patch('/:id')
 .delete('/:id')
 
