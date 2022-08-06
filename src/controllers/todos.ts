@@ -1,4 +1,11 @@
 import { RequestHandler } from "express"
-export const createTodo: RequestHandler =  (req,res,next) => {
+import {Todo} from '../models/todos'
+const Todos:Todo[] = [];
 
+export const createTodo: RequestHandler =  (req,res,next) => {
+const text = (req.body as {text:string}).text
+const newTodo  = new Todo(Math.random().toString(),text)
+
+Todos.push(newTodo);
+res.status(201).json({message:'Todo successfully created.'})
 }
